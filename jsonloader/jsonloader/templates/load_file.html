@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load File</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if errors %}
+        {% for error in errors %}
+        <p style="color: red;">{{ error }}</p>
+        {% endfor %}
+        {% elif uploaded%}
+            <p style="color: green;">File uploaded</p>
+    {% endif %}
+</body>
+</html>
